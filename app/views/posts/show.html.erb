@@ -1,6 +1,21 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
 
+<%= form_for([@post, @post.comments.build]) do |f| %>
+	<p>
+	<%= f.label :author_id %>
+	<%= f.text_field :author_id %>
+	</p>
 
+	<p>
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+	</p>
+
+	<p>
+	<%= f.submit 'Add comment' %>
+	</p>
+
+<% end %>
 
 <%= link_to 'Show all articles', posts_path %>

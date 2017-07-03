@@ -19,8 +19,13 @@ ActiveRecord::Schema.define(version: 20170630111125) do
     t.text "content"
     t.integer "author_id"
     t.integer "raiting"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "posts", force: :cascade do |t|

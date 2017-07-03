@@ -4,6 +4,8 @@ class CreateComments < ActiveRecord::Migration[5.1]
       t.text :content
       t.integer :author_id
       t.integer :raiting
+      t.references :commentable, polymorphic: true
+      t.references  :parent
 
       t.timestamps
     end
